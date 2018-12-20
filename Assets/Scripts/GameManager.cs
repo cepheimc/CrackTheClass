@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     void SetUpLevel()
     {
         var chosenLevel = tileGrids[levelNumber];
-        var instance = Instantiate(chosenLevel, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        Instantiate(chosenLevel, new Vector3(0f, 0f, 0f), Quaternion.identity);
     }
 
     // Update is called once per frame

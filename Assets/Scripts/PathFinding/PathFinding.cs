@@ -25,22 +25,22 @@ public class PathFinding : MonoBehaviour
     {
         requestManager = GetComponent<PathRequestManager>();
         grid = GetComponent<Grid>();
+
+        GameManager gameManager = GameManager.instance;
+        gameManager.levelPathFinding = this;
     }
 
-
-    public void StartFindPath(Vector2 startPos, Vector2 targetPos)
+    public void StartFindPath(Vector2 startPos, Vector2 targetPos, Action<Vector2[], bool> callback)
     {
-        StartCoroutine(FindPath(startPos, targetPos));
+        StartCoroutine(FindPath(startPos, targetPos, callback));
     }
 
-    IEnumerator FindPath(Vector2 startPos, Vector2 targetPos)
+    IEnumerator FindPath(Vector2 startPos, Vector2 targetPos, Action<Vector2[], bool> callback)
     {
          Vector2[] waypoints = new Vector2[0];
          bool pathSuccess = false;
-
          Node startNode = grid.NodeFromWorldPoint(startPos);
          Node targetNode = grid.NodeFromWorldPoint(targetPos);
-
 
          if (startNode.walkable && targetNode.walkable)
          {
@@ -84,7 +84,8 @@ public class PathFinding : MonoBehaviour
          {
              waypoints = RetracePath(startNode, targetNode);
          }
-         requestManager.FinishedProcessingPath(waypoints, pathSuccess);
+         callback(waypoints, pathSuccess);
+         //requestManager.FinishedProcessingPath(waypoints, pathSuccess);
 
        /* Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);

@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] levelGrids;
     public string[] levelNames;
+    public PathFinding levelPathFinding;
+
 
     public static GameManager instance = null;
 
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (instance == null)

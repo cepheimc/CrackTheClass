@@ -5,7 +5,7 @@ using UnityEngine;
 public class Moving : MonoBehaviour
 {
     public Transform target;
-    float speed = 20;
+    float speed = 5;
     Vector2[] path;
     int targetIndex;
 

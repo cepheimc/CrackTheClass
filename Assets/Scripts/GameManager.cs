@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        return;
         canvas = GameObject.Instantiate(initialScreen, new Vector3(0f, 0f, 0f), Quaternion.identity);
 
         for (int i = 0; i < levelGrids.Length; i++)
@@ -83,15 +84,5 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
 
 
-    }
-
-    void SetUpLevel()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

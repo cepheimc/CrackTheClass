@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 1307942887}
   - component: {fileID: 1307942886}
   - component: {fileID: 1307942885}
-  - component: {fileID: 1307942884}
-  - component: {fileID: 1307942883}
   m_Layer: 0
   m_Name: Lecture
   m_TagString: Untagged
@@ -123,38 +121,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &1307942884
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307942882}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
---- !u!114 &1307942883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307942882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e79bd31bd19184c9a88b5908a779ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpot: {fileID: 0}
-  minX: -8
-  maxX: 13
-  minY: -5
-  maxY: 4
-  speed: 10
-  startWaitTime: 10

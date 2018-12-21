@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] tileGrids;
+    public GameObject[] levelGrids;
+    public string[] levelNames;
+
     public static GameManager instance = null;
-    public int levelNumber;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -18,13 +20,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
-        SetUpLevel();
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Debug.Log(string.Format("Level {0} loaded", level));
     }
 
     void SetUpLevel()
     {
-        var chosenLevel = tileGrids[levelNumber];
-        Instantiate(chosenLevel, new Vector3(0f, 0f, 0f), Quaternion.identity);
     }
 
     // Update is called once per frame

@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abf4fec73800ab40bdc37142fd4434e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileGrids:
+  levelGrids:
   - {fileID: 2929958147248131404, guid: b1e75059bda7d2a43ac23a56dfdad5d5, type: 3}
   - {fileID: 8017685718510993297, guid: 82f8ab96ee25e494d901670d57e2ff5f, type: 3}
+  levelNames:
+  - Simple Level
+  - Square Level

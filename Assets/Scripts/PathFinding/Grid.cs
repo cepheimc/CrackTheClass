@@ -38,8 +38,8 @@ public class Grid : MonoBehaviour
         {
             for (int y = 0; y < gridSizeY; y++)
             {
-                Vector2 worldPoint = worldBottomLeft + Vector2.right * (x * nodeDiameter + nodeSize) + Vector2.up * (y * nodeDiameter + nodeSize);
-                bool walkable = !(Physics2D.OverlapBox(worldPoint, new Vector2(0.2f, 0.2f), unwalkableMask));
+                Vector2 worldPoint = worldBottomLeft + Vector2.right * (x * nodeDiameter) + Vector2.up * (y * nodeDiameter);
+                bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeSize, unwalkableMask));
                 gridNode[x, y] = new Node(walkable, worldPoint, x, y);
             }
         }
@@ -72,20 +72,20 @@ public class Grid : MonoBehaviour
 
     public Node NodeFromWorldPoint(Vector2 worldPosition)
     {
-        float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
-        float percentY = (worldPosition.y + gridWorldSize.y / 2) / gridWorldSize.y;
+        float percentX = (worldPosition.x + gridWorldSize.x / 2+1) / gridWorldSize.x;
+        float percentY = (worldPosition.y + gridWorldSize.y / 2+1) / gridWorldSize.y;
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
 
-        int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
-        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+        int x = Mathf.RoundToInt((gridSizeX) * percentX);
+        int y = Mathf.RoundToInt((gridSizeY) * percentY);
         return gridNode[x, y];
     }
 
     public List<Node> path;
-    void OnDrawGizmos()
+   /* void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube((Vector2)transform.position, new Vector2(gridWorldSize.x, gridWorldSize.y));        
+        Gizmos.DrawWireCube(transform.position, new Vector2(gridWorldSize.x, gridWorldSize.y));        
 
             if (gridNode != null)
             {
@@ -95,9 +95,9 @@ public class Grid : MonoBehaviour
                     if (path != null)
                         if (path.Contains(n))
                             Gizmos.color = Color.black;
-                    Gizmos.DrawWireCube(n.worldPosition, Vector2.one * (nodeDiameter - .1f));
+                    Gizmos.DrawWireCube(n.worldPosition, Vector2.one * (nodeDiameter));
                 }
             }
         
-    }
+    }*/
 }

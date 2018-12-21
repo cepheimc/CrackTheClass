@@ -125,11 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1307942888, guid: 339ddb32dbc38d14c810e6a2ef759d31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.47
+      value: -2.03
       objectReference: {fileID: 0}
     - target: {fileID: 1307942888, guid: 339ddb32dbc38d14c810e6a2ef759d31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.99
+      value: -5.36
       objectReference: {fileID: 0}
     - target: {fileID: 1307942888, guid: 339ddb32dbc38d14c810e6a2ef759d31, type: 3}
       propertyPath: m_LocalPosition.z
@@ -292,7 +292,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   gridWorldSize: {x: 22, y: 11}
-  nodeSize: 0.1
+  nodeSize: 0.25
 --- !u!114 &351847405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +305,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e702526dd19a3f44a2e183db91ebb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1042637094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 66869458483837436, guid: c548ac9787f9f9549a89dcdf920c7c4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1135365005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042637095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042637094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1603e52debaeb3441babaa657ac658fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWaitTime: 10
+  minX: -11
+  maxX: 9
+  minY: -6
+  maxY: 3
 --- !u!1001 &1135365005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,12 +343,12 @@ PrefabInstance:
     - target: {fileID: 66869458483837427, guid: c548ac9787f9f9549a89dcdf920c7c4e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.56
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 66869458483837427, guid: c548ac9787f9f9549a89dcdf920c7c4e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.95
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 66869458483837427, guid: c548ac9787f9f9549a89dcdf920c7c4e,
         type: 3}
@@ -399,6 +422,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1449587300}
+  speed: 3
+  startWaitTime: 20
+  minX: -11
+  maxX: 10
+  minY: -6
+  maxY: 3
 --- !u!114 &1579637222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +484,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleLevelGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 423343904569790651, guid: b1e75059bda7d2a43ac23a56dfdad5d5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6264121467760001409, guid: b1e75059bda7d2a43ac23a56dfdad5d5,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -484,11 +518,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.013
-      objectReference: {fileID: 0}
-    - target: {fileID: 423343904569790651, guid: b1e75059bda7d2a43ac23a56dfdad5d5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8075708604316275764, guid: b1e75059bda7d2a43ac23a56dfdad5d5,
         type: 3}

@@ -20,19 +20,15 @@ public class MovingSpot : MonoBehaviour
 
     void Update()
     {
-        
+        if (waitTime <= 0)
+        {
+            transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            waitTime = Random.Range(0, startWaitTime);
+        }
+        else
+        {
+            waitTime -= Time.deltaTime;
+        }
 
-       // if (Vector2.Distance(transform.position, moveSpot.position) < 0.2f)
-      //  {
-            if (waitTime <= 0)
-            {
-                transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-                waitTime = Random.Range(0, startWaitTime);
-            }
-            else
-            {
-                waitTime -= Time.deltaTime;
-            }
-      //  }
     }
 }

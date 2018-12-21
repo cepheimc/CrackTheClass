@@ -21,7 +21,7 @@ public class Moving : MonoBehaviour
 
     void Start()
     {
-        waitTime = startWaitTime;
+       waitTime = startWaitTime;
         target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
      
         m = GetComponent<PathRequestManager>();

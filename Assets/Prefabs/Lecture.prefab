@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1307942885}
   - component: {fileID: 7458035274828802055}
   - component: {fileID: 5019317435111202544}
+  - component: {fileID: 55743998633096507}
   m_Layer: 0
   m_Name: Lecture
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 708245797
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -134,10 +135,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0952a16c369384ca3c926228a22f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 66869458483837427, guid: c548ac9787f9f9549a89dcdf920c7c4e, type: 3}
   speed: 3
-  startWaitTime: 20
-  minX: -11
-  maxX: 10
-  minY: -6
-  maxY: 3
+  startWaitTime: 10
+  minX: -5
+  maxX: 9
+  minY: -5
+  maxY: 5
+--- !u!114 &55743998633096507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307942882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccd9e562ab326d4db1213ffc181afcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

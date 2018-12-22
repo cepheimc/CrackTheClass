@@ -24,7 +24,8 @@ public class Moving : MonoBehaviour
     {
         waitTime = startWaitTime;
         target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-     
+
+        animator = GetComponent<Animator>();
         m = GetComponent<PathRequestManager>();
         m.RequestPath(transform.position, target.position, OnPathFound);
     }
@@ -43,11 +44,13 @@ public class Moving : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
         }
+        Debug.Log(123);
         m.RequestPath(transform.position, target.position, OnPathFound);
     }
 
     public void OnPathFound(Vector2[] newPath, bool pathSuccessful)
     {
+        Debug.Log(pathSuccessful);
         if (pathSuccessful)
         {
             path = newPath;

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &66869458483837436
+--- !u!1 &46
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 66869458483837427}
-  - component: {fileID: 1537518615488667500}
+  - component: {fileID: 64}
+  - component: {fileID: 137}
   m_Layer: 0
   m_Name: LectureSpot
   m_TagString: Untagged
@@ -17,34 +17,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &66869458483837427
+--- !u!4 &64
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66869458483837436}
+  m_GameObject: {fileID: 46}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0288286, y: 2.4636924, z: 0}
+  m_LocalPosition: {x: 5.907744, y: 1.09739, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1537518615488667500
+--- !u!114 &137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66869458483837436}
-  m_Enabled: 1
+  m_GameObject: {fileID: 46}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1603e52debaeb3441babaa657ac658fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaitTime: 5
-  minX: -5
-  maxX: 9
-  minY: -5
-  maxY: 5
+  startWaitTime: 20
+  minX: -4
+  maxX: 8
+  minY: -4
+  maxY: 4

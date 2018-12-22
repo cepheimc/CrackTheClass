@@ -23,7 +23,8 @@ public class PathFinding : MonoBehaviour
 
     IEnumerator FindPath(Vector2 startPos, Vector2 targetPos, Action<Vector2[], bool> callback)
     {
-         Vector2[] waypoints = new Vector2[0];
+        Debug.Log(targetPos);
+        Vector2[] waypoints = new Vector2[0];
          bool pathSuccess = false;
          Node startNode = grid.NodeFromWorldPoint(startPos);
          Node targetNode = grid.NodeFromWorldPoint(targetPos);

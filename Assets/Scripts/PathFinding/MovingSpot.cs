@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MovingSpot : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class MovingSpot : MonoBehaviour
         if (waitTime <= 0)
         {
             transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-            waitTime = Random.Range(0, startWaitTime);
+            waitTime = Random.Range(10, startWaitTime);
         }
         else
         {

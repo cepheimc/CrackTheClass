@@ -136,12 +136,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 66869458483837427, guid: c548ac9787f9f9549a89dcdf920c7c4e, type: 3}
-  speed: 3
-  startWaitTime: 10
-  minX: -5
-  maxX: 9
-  minY: -5
-  maxY: 5
+  speed: 1
+  startWaitTime: 20
+  minX: -4
+  maxX: 8
+  minY: -4
+  maxY: 4
 --- !u!114 &55743998633096507
 MonoBehaviour:
   m_ObjectHideFlags: 0

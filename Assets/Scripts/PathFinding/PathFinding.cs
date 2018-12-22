@@ -6,12 +6,10 @@ using System;
 
 public class PathFinding : MonoBehaviour
 {
-    PathRequestManager requestManager;
     Grid grid;
 
     void Awake()
     {
-        requestManager = GetComponent<PathRequestManager>();
         grid = GetComponent<Grid>();
 
         GameManager gameManager = GameManager.instance;

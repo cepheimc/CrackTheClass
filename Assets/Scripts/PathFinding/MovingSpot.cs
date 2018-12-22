@@ -21,7 +21,7 @@ public class MovingSpot : MonoBehaviour
 
     void Update()
     {
-        if (waitTime <= 0)
+       /* if (waitTime <= 0)
         {
             transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
             waitTime = Random.Range(10, startWaitTime);
@@ -29,7 +29,7 @@ public class MovingSpot : MonoBehaviour
         else
         {
             waitTime -= Time.deltaTime;
-        }
+        }*/
 
     }
 }

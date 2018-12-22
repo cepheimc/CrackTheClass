@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log(123);
         if (instance == null)
             instance = this;
         else if (instance != this)
@@ -74,11 +73,14 @@ public class GameManager : MonoBehaviour
 
     void LoadLevel(Level level)
     {
+        Debug.Log(1);
         Destroy(canvas);
-
+        Debug.Log(2);
+        Debug.Log(level.grid);
         Instantiate(level.grid, new Vector3(2f, 0f, 0f), Quaternion.identity);
+        Debug.Log(3);
         Instantiate(level.exit, level.exit.transform.position, Quaternion.identity);
-
+        Debug.Log(4);
         Instantiate(player, level.playerStart.transform.position, Quaternion.identity);
         
         

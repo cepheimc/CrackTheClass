@@ -84,7 +84,7 @@ public class Grid : MonoBehaviour
     }
 
     public List<Node> path;
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector2(gridWorldSize.x, gridWorldSize.y));        
 
@@ -100,5 +100,5 @@ public class Grid : MonoBehaviour
                 }
             }
         
-    }
+    }*/
 }

@@ -47,6 +47,14 @@ public class MovingObject : MonoBehaviour
         rb.MovePosition(transform.position + speed * change * Time.deltaTime);
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("Exit"))

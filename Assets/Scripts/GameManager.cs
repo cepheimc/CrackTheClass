@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         public string name;
         public GameObject playerStart;
         public GameObject teacherStart;
+        public GameObject student1Start;
         public GameObject exit;
     }
 
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject initialScreen;
     public GameObject player;
     public GameObject lecturer;
+    public GameObject student1;
 
     // There is always only one level (tile grid) loaded
     // This singleton will carry it's pathfinding object 
@@ -79,6 +81,8 @@ public class GameManager : MonoBehaviour
         Instantiate(level.exit, level.exit.transform.position, Quaternion.identity);
         Instantiate(player, level.playerStart.transform.position, Quaternion.identity);
         //Instantiate(lecturer, level.teacherStart.transform.position, Quaternion.identity);
+        
+        //Instantiate(student1, level.student1Start.transform.position, Quaternion.identity);
         Instantiate(lecturer);
 
 

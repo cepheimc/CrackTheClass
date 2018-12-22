@@ -34,15 +34,20 @@ public class Moving : MonoBehaviour
     void Update()
     {
         Debug.Log(waitTime);
-        if (waitTime <= 0)
+        if (true||Vector2.Distance(transform.position, target.position) < 0.2f)
         {
-            target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-            waitTime = Random.Range(0, startWaitTime);
+            if (waitTime <= 0)
+            {
+                target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+                waitTime = Random.Range(0, startWaitTime);
+            }
+            else
+            {
+              //  animator.SetBool("moving", false);
+                waitTime -= Time.deltaTime;
+            }
         }
-        else
-        {
-            waitTime -= Time.deltaTime;
-        }
+
         m.RequestPath(transform.position, target.position, OnPathFound);
     }
 
@@ -54,12 +59,12 @@ public class Moving : MonoBehaviour
             targetIndex = 0;
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
-           // animator.SetBool("moving", true);
+            
         }
         else
         {
             // Some madness for lector
-           // animator.SetBool("moving", false);
+          //  animator.SetBool("moving", false);
             waitTime -= 5;
         }
     }
@@ -83,7 +88,7 @@ public class Moving : MonoBehaviour
                 }
                 currentWaypoint = path[targetIndex];
             }
-
+           
             transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
           
             yield return null;
@@ -92,7 +97,7 @@ public class Moving : MonoBehaviour
         
     }
 
-    public void OnDrawGizmos()
+    /*  public void OnDrawGizmos()
     {
         if (path != null)
         {
@@ -111,5 +116,5 @@ public class Moving : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

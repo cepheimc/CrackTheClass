@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject pickLevelButton;
     public GameObject initialScreen;
     public GameObject player;
+    public GameObject lecturer;
 
     // There is always only one level (tile grid) loaded
     // This singleton will carry it's pathfinding object 
@@ -32,7 +33,6 @@ public class GameManager : MonoBehaviour
 
     private GameObject canvas;
     private GameObject level;
-    
 
 
     void Awake()
@@ -73,17 +73,15 @@ public class GameManager : MonoBehaviour
 
     void LoadLevel(Level level)
     {
-        Debug.Log(1);
         Destroy(canvas);
-        Debug.Log(2);
-        Debug.Log(level.grid);
+
         Instantiate(level.grid, new Vector3(2f, 0f, 0f), Quaternion.identity);
-        Debug.Log(3);
         Instantiate(level.exit, level.exit.transform.position, Quaternion.identity);
-        Debug.Log(4);
         Instantiate(player, level.playerStart.transform.position, Quaternion.identity);
-        
-        
+        //Instantiate(lecturer, level.teacherStart.transform.position, Quaternion.identity);
+        Instantiate(lecturer);
+
+
     }
 
     void Restart()

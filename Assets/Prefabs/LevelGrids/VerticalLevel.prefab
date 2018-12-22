@@ -1032,6 +1032,8 @@ GameObject:
   - component: {fileID: 8034984273336920826}
   - component: {fileID: 8034984273336920825}
   - component: {fileID: 6256397352910690043}
+  - component: {fileID: 6965380485098511469}
+  - component: {fileID: 4079983583662077076}
   m_Layer: 0
   m_Name: VerticalLevel
   m_TagString: Untagged
@@ -1104,6 +1106,35 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &6965380485098511469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034984273336920824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf54decb77ea24880cffa6d23570ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 512
+  gridWorldSize: {x: 13, y: 9}
+  nodeSize: 0.1
+--- !u!114 &4079983583662077076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034984273336920824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e702526dd19a3f44a2e183db91ebb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8034984274412706245
 GameObject:
   m_ObjectHideFlags: 0

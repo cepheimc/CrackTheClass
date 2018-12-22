@@ -48,16 +48,19 @@ MonoBehaviour:
     name: Vertical
     playerStart: {fileID: 5333327331035877999, guid: 198ef8d473b89fc4880dd295c8594115,
       type: 3}
-    teacherStart: {fileID: 0}
+    teacherStart: {fileID: 5244949938072183434, guid: 44d75781b8bbf1f419f7fcaab7f69541,
+      type: 3}
     exit: {fileID: 3666454930509066091, guid: 63c4958aa00eb5741bfe7c01a107818f, type: 3}
   - grid: {fileID: 3633333577251201546, guid: 3edd1e2ca68d7d743ab8cc5e5e87dca1, type: 3}
     name: Horizontal
     playerStart: {fileID: 5696261067419400453, guid: e57aaf0f77cb48e4b8d5151e1eb091c8,
       type: 3}
-    teacherStart: {fileID: 0}
+    teacherStart: {fileID: 4528193779436290798, guid: 938ff043e851dd040a834abced54ff70,
+      type: 3}
     exit: {fileID: 2548296474279368631, guid: 9b6c60e536b6ad741975f402a90adcca, type: 3}
   pickLevelButton: {fileID: 3289715270621008424, guid: 558bb57cc2c873a47b7ac1a079cb43dd,
     type: 3}
   initialScreen: {fileID: 1922565324, guid: 8cecf601d1be6da4c99ebda28a0f0080, type: 3}
   player: {fileID: 4533956416688185150, guid: bf22873e7a656499cb629744a124ace3, type: 3}
+  lecturer: {fileID: 1307942882, guid: 339ddb32dbc38d14c810e6a2ef759d31, type: 3}
   levelPathFinding: {fileID: 0}

@@ -2384,6 +2384,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3633333577251201588}
   - component: {fileID: 3633333577251201547}
+  - component: {fileID: 1922023809870202887}
+  - component: {fileID: 2921102634243285293}
   m_Layer: 0
   m_Name: HorizontalLevel
   m_TagString: Untagged
@@ -2419,3 +2421,32 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &1922023809870202887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633333577251201546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf54decb77ea24880cffa6d23570ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 512
+  gridWorldSize: {x: 13, y: 9}
+  nodeSize: 0.1
+--- !u!114 &2921102634243285293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633333577251201546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e702526dd19a3f44a2e183db91ebb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

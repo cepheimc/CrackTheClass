@@ -15,6 +15,7 @@ public class PathRequestManager : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log(GameManager.instance.levelPathFinding);
         pathfinding = GameManager.instance.levelPathFinding;
     }
 

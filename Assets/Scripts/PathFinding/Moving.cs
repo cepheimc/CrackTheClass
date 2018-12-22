@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Moving : MonoBehaviour
 {
@@ -24,24 +25,23 @@ public class Moving : MonoBehaviour
     {
         waitTime = startWaitTime;
         target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-     
+
+       // animator = GetComponent<Animator>();
         m = GetComponent<PathRequestManager>();
         m.RequestPath(transform.position, target.position, OnPathFound);
     }
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) < 0.2f)
+        Debug.Log(waitTime);
+        if (waitTime <= 0)
         {
-            if (waitTime <= 0)
-            {
-                target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-                waitTime = Random.Range(0, startWaitTime);
-            }
-            else
-            {
-                waitTime -= Time.deltaTime;
-            }
+            target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            waitTime = Random.Range(0, startWaitTime);
+        }
+        else
+        {
+            waitTime -= Time.deltaTime;
         }
         m.RequestPath(transform.position, target.position, OnPathFound);
     }
@@ -54,12 +54,12 @@ public class Moving : MonoBehaviour
             targetIndex = 0;
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
-            animator.SetBool("moving", true);
+           // animator.SetBool("moving", true);
         }
         else
         {
             // Some madness for lector
-            animator.SetBool("moving", false);
+           // animator.SetBool("moving", false);
             waitTime -= 5;
         }
     }

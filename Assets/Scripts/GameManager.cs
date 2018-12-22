@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log(123);
         if (instance == null)
             instance = this;
         else if (instance != this)

@@ -18,6 +18,7 @@ public class Moving : MonoBehaviour
     public float maxY;
 
     private PathRequestManager m;
+    private Animator animator;
 
     void Start()
     {
@@ -42,7 +43,6 @@ public class Moving : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
         }
-        
         m.RequestPath(transform.position, target.position, OnPathFound);
     }
 
@@ -54,10 +54,12 @@ public class Moving : MonoBehaviour
             targetIndex = 0;
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
+            animator.SetBool("moving", true);
         }
         else
         {
             // Some madness for lector
+            animator.SetBool("moving", false);
             waitTime -= 5;
         }
     }

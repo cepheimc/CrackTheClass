@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,10 +7,21 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] levelGrids;
-    public string[] levelNames;
+    [Serializable]
+    public class Level
+    {
+        public GameObject grid;
+        public string name;
+        public GameObject playerStart;
+        public GameObject teacherStart;
+        public GameObject exit;
+    }
+
+    public Level[] levels;
+
     public GameObject pickLevelButton;
     public GameObject initialScreen;
+    public GameObject player;
 
     // There is always only one level (tile grid) loaded
     // This singleton will carry it's pathfinding object 
@@ -20,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject canvas;
     private GameObject level;
+    
+
 
     void Awake()
     {
@@ -34,10 +48,9 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        return;
         canvas = GameObject.Instantiate(initialScreen, new Vector3(0f, 0f, 0f), Quaternion.identity);
 
-        for (int i = 0; i < levelGrids.Length; i++)
+        for (int i = 0; i < levels.Length; i++)
         {
             var button = GameObject.Instantiate(pickLevelButton, new Vector3(0f, 0f, 0f), Quaternion.identity);
             button.transform.SetParent(canvas.transform, false);  // drop positioning
@@ -50,23 +63,24 @@ public class GameManager : MonoBehaviour
             button.transform.position = position;
 
             var buttonText = button.GetComponentInChildren<Text>();
-            buttonText.text = i > levelNames.Length
-                              ? string.Format("Level {0}", i + 1)
-                              : levelNames[i];
-            Debug.Log(string.Format("Loading {0}", i));
+            buttonText.text = levels[i].name;
+
             var iStored = i;
-            button.GetComponent<Button>().onClick.AddListener(delegate { LoadLevel(levelGrids[iStored]); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { LoadLevel(levels[iStored]); });
+
         }
         
     }
 
-    void LoadLevel(GameObject levelToInstantiate)
+    void LoadLevel(Level level)
     {
         Destroy(canvas);
 
-        Instantiate(levelToInstantiate);
+        Instantiate(level.grid, new Vector3(2f, 0f, 0f), Quaternion.identity);
+        Instantiate(level.exit, level.exit.transform.position, Quaternion.identity);
 
-        Invoke("Restart", 1f);
+        Instantiate(player, level.playerStart.transform.position, Quaternion.identity);
+        
         
     }
 

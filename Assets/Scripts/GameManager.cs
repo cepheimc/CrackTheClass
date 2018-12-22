@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject lecturer;
 
+    public AudioSource menuMusic;
+    public AudioSource levelMusic;
+
     // There is always only one level (tile grid) loaded
     // This singleton will carry it's pathfinding object 
     public PathFinding levelPathFinding;
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        menuMusic.Play();
         canvas = GameObject.Instantiate(initialScreen, new Vector3(0f, 0f, 0f), Quaternion.identity);
 
         for (int i = 0; i < levels.Length; i++)
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     void LoadLevel(Level level)
     {
+        menuMusic.Stop();
         Destroy(canvas);
 
         Instantiate(level.grid, new Vector3(2f, 0f, 0f), Quaternion.identity);
@@ -80,13 +85,14 @@ public class GameManager : MonoBehaviour
         Instantiate(player, level.playerStart.transform.position, Quaternion.identity);
         //Instantiate(lecturer, level.teacherStart.transform.position, Quaternion.identity);
         Instantiate(lecturer);
-
+        levelMusic.Play();
 
     }
 
     void Restart()
     {
         SceneManager.LoadScene(0);
+        levelMusic.Stop();
     }
 
     void OnEnable()

@@ -11,9 +11,6 @@ public class PathFinding : MonoBehaviour
     void Awake()
     {
         grid = GetComponent<Grid>();
-
-        GameManager gameManager = GameManager.instance;
-        gameManager.levelPathFinding = this;
     }
 
     public void StartFindPath(Vector2 startPos, Vector2 targetPos, Action<Vector2[], bool> callback)
@@ -23,8 +20,7 @@ public class PathFinding : MonoBehaviour
 
     IEnumerator FindPath(Vector2 startPos, Vector2 targetPos, Action<Vector2[], bool> callback)
     {
-        Debug.Log(targetPos);
-        Vector2[] waypoints = new Vector2[0];
+         Vector2[] waypoints = new Vector2[0];
          bool pathSuccess = false;
          Node startNode = grid.NodeFromWorldPoint(startPos);
          Node targetNode = grid.NodeFromWorldPoint(targetPos);

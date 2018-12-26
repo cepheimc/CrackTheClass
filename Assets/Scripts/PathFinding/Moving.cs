@@ -33,7 +33,6 @@ public class Moving : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(waitTime);
         if (true||Vector2.Distance(transform.position, target.position) < 0.2f)
         {
             if (waitTime <= 0)

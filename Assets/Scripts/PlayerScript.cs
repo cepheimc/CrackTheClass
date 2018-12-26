@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MovingObject : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     public float speed = 10;
     private Animator animator;
@@ -46,20 +46,13 @@ public class MovingObject : MonoBehaviour
     {
         rb.MovePosition(transform.position + speed * change * Time.deltaTime);
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("PickUp"))
-        {
-            other.gameObject.SetActive(false);
-        }
-    }
-
+    
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("Exit"))
         {
-            SceneManager.LoadScene(0);
+            // We know that this is not complied with SOLID, sorry...
+            SceneManager.LoadScene("InitialScene", LoadSceneMode.Single);
         }
     }
 

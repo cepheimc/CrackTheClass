@@ -8,15 +8,15 @@ public class PathRequestManager : MonoBehaviour
     Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
     PathRequest currentPathRequest;
 
-    // static PathRequestManager instance;
     PathFinding pathfinding;
 
     bool isProcessingPath;
 
     void Awake()
     {
-        Debug.Log(GameManager.instance.levelPathFinding);
-        pathfinding = GameManager.instance.levelPathFinding;
+        var levelGrid = GameObject.Find("LevelGrid");
+        pathfinding = levelGrid.GetComponent<PathFinding>();
+        Debug.Log(pathfinding);
     }
 
     public void RequestPath(Vector2 pathStart, Vector2 pathEnd, Action<Vector2[], bool> callback)
@@ -28,6 +28,7 @@ public class PathRequestManager : MonoBehaviour
 
     void TryProcessNext()
     {
+        
         if (!isProcessingPath && pathRequestQueue.Count > 0)
         {
             currentPathRequest = pathRequestQueue.Dequeue();

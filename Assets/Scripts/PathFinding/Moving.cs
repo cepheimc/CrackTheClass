@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 public class Moving : MonoBehaviour
 {
-    public Transform target;
     public float speed;
     Vector2[] path;
     int targetIndex;
@@ -19,35 +18,27 @@ public class Moving : MonoBehaviour
     public float maxY;
 
     private PathRequestManager m;
-    private Animator animator;
+    private Transform targetTransform;
 
     void Start()
     {
-        waitTime = startWaitTime;
-        target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        var target = new GameObject();
+        targetTransform = target.transform;
+        targetTransform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
 
-       // animator = GetComponent<Animator>();
         m = GetComponent<PathRequestManager>();
-        m.RequestPath(transform.position, target.position, OnPathFound);
+        m.RequestPath(transform.position, targetTransform.position, OnPathFound);
     }
 
     void Update()
     {
-        if (true||Vector2.Distance(transform.position, target.position) < 0.2f)
+        if (Vector2.Distance(transform.position, targetTransform.position) < 0.2f)
         {
-            if (waitTime <= 0)
-            {
-                target.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-                waitTime = Random.Range(0, startWaitTime);
-            }
-            else
-            {
-              //  animator.SetBool("moving", false);
-                waitTime -= Time.deltaTime;
-            }
+            targetTransform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         }
-
-        m.RequestPath(transform.position, target.position, OnPathFound);
+        // Repeatedly re-calculate path
+        if (Random.Range(0, 10) > 5)
+            m.RequestPath(transform.position, targetTransform.position, OnPathFound);
     }
 
     public void OnPathFound(Vector2[] newPath, bool pathSuccessful)
@@ -60,18 +51,11 @@ public class Moving : MonoBehaviour
             StartCoroutine("FollowPath");
             
         }
-        else
-        {
-            // Some madness for lector
-          //  animator.SetBool("moving", false);
-            waitTime -= 5;
-        }
     }
     
 
     IEnumerator FollowPath()
     {
-
         if (path.Length == 0)
             yield break;
 
@@ -96,24 +80,26 @@ public class Moving : MonoBehaviour
         
     }
 
-    /*  public void OnDrawGizmos()
-    {
-        if (path != null)
-        {
-            for (int i = targetIndex; i < path.Length; i++)
-            {
-                Gizmos.color = Color.black;
-               // Gizmos.DrawCube(path[i], Vector2.one);
+    
+    // Optionally draws path on scene for debugging purposes
+     public void OnDrawGizmos()
+     {
+         if (path != null)
+         {
+             for (int i = targetIndex; i < path.Length; i++)
+             {
+                 Gizmos.color = Color.black;
+                 // Gizmos.DrawCube(path[i], Vector2.one);
 
-                if (i == targetIndex)
-                {
-                    Gizmos.DrawLine(transform.position, path[i]);
-                }
-                else
-                {
-                    Gizmos.DrawLine(path[i], path[i]);
-                }
-            }
-        }
-    }*/
+                 if (i == targetIndex)
+                 {
+                     Gizmos.DrawLine(transform.position, path[i]);
+                 }
+                 else
+                 {
+                     Gizmos.DrawLine(path[i], path[i]);
+                 }
+             }
+         }
+     }
 }

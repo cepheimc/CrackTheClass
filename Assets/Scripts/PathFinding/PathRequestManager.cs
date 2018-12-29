@@ -16,7 +16,6 @@ public class PathRequestManager : MonoBehaviour
     {
         var levelGrid = GameObject.Find("LevelGrid");
         pathfinding = levelGrid.GetComponent<PathFinding>();
-        Debug.Log(pathfinding);
     }
 
     public void RequestPath(Vector2 pathStart, Vector2 pathEnd, Action<Vector2[], bool> callback)

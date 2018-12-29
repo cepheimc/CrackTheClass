@@ -15,8 +15,9 @@ public class MovingSpot : MonoBehaviour
 
     void Start()
     {
-        waitTime = startWaitTime;
-        transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        //Debug.Log(string.Format("Starting at {0}", transform.position));
+        //waitTime = startWaitTime;
+        // transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 
     void Update()

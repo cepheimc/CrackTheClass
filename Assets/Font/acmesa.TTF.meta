@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 6c4fe77ab08abe540a25e36b685c2daa
+guid: e80e8ec0868475342a201847cfe92d9d
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 300
+  fontSize: 180
   forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Joystix
+  fontName: A.C.M.E. Secret Agent
   fontNames:
-  - Joystix
+  - A.C.M.E. Secret Agent
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -1,88 +1,104 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Moving : MonoBehaviour
 {
+    public enum States {
+        Standing,  // No target to follow, just standing (start of scene or path finish)
+        Calculating,  // New target found, wait until path calculated 
+        Moving,  // Moving to target by calculated path
+    }
     public float speed;
-    Vector2[] path;
-    int targetIndex;
-
-    private float waitTime;
-    public float startWaitTime;
 
     public float minX;
     public float maxX;
     public float minY;
     public float maxY;
 
-    private PathRequestManager m;
-    private Transform targetTransform;
+    protected States state;  // We could do this via state machine but decided that is it not worth here
+    protected Transform targetTransform;
+    protected int targetIndex = 0;
+    protected Vector2[] path;
+
+    private PathRequestManager pathManager;
 
     void Start()
     {
-        var target = new GameObject();
-        targetTransform = target.transform;
-        targetTransform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-
-        m = GetComponent<PathRequestManager>();
-        m.RequestPath(transform.position, targetTransform.position, OnPathFound);
+        targetTransform = (new GameObject()).transform;
+        pathManager = GetComponent<PathRequestManager>();
+        path = new Vector2[0];
     }
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, targetTransform.position) < 0.2f)
+        switch (state)
         {
-            targetTransform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            case States.Standing:
+                targetTransform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+                state = States.Calculating;
+                pathManager.RequestPath(transform.position, targetTransform.position, OnPathFound);
+                break;
+            case States.Calculating:
+                break;  // just wait till calculating ends
+            case States.Moving:
+                if (IsPathFinished())
+                {
+                    StopCoroutine("FollowPath");
+                    state = States.Standing;
+                }
+                break;
         }
-        // Repeatedly re-calculate path
-        if (Random.Range(0, 10) > 5)
-            m.RequestPath(transform.position, targetTransform.position, OnPathFound);
     }
 
-    public void OnPathFound(Vector2[] newPath, bool pathSuccessful)
+    private bool IsPathFinished()
     {
-        if (pathSuccessful)
-        {
-            path = newPath;
-            targetIndex = 0;
-            StopCoroutine("FollowPath");
-            StartCoroutine("FollowPath");
-            
-        }
+        return (targetTransform.position - transform.position).magnitude <= 0.3 || targetIndex >= path.Length;
     }
-    
+
+    void OnPathFound(Vector2[] newPath, bool pathSuccessful)
+    {
+        // Debug.Log(string.Format("{0} {1} {2}", pathSuccessful, newPath.Length, state));
+        if (newPath.Length == 0 || (state == States.Calculating && !pathSuccessful))
+        {
+            state = States.Standing;
+            return;
+        }
+        
+        state = States.Moving;
+        path = newPath;
+        
+        StartCoroutine("FollowPath");
+    }
 
     IEnumerator FollowPath()
     {
-        if (path.Length == 0)
-            yield break;
-
-        Vector2 currentWaypoint = path[0];
+        targetIndex = 0;
+        Vector2 currentWaypoint = path[targetIndex];
         while (true)
         {
-            if ((Vector2)transform.position == currentWaypoint)
+            if (IsPathFinished())
+                yield break;
+
+            // It takes time to reach waypoint, so switch it when object position is equal to waypoint
+            if (transform.position == (Vector3) currentWaypoint)
             {
+                Debug.Log(1);
                 targetIndex++;
-                if (targetIndex >= path.Length)
-                {
+                if (targetIndex == path.Length)
                     yield break;
-                }
                 currentWaypoint = path[targetIndex];
             }
-           
-            transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-          
+            //Debug.Log(string.Format("From {0} to {1}, should be {2}", transform.position, (Vector3) currentWaypoint, Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime)));
+
+            transform.position = (Vector3) Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
             yield return null;
-
         }
-        
     }
-
     
-    // Optionally draws path on scene for debugging purposes
-     public void OnDrawGizmos()
+    // draws path on scene for debugging purposes
+     void OnDrawGizmos()
      {
          if (path != null)
          {
@@ -97,7 +113,7 @@ public class Moving : MonoBehaviour
                  }
                  else
                  {
-                     Gizmos.DrawLine(path[i], path[i]);
+                     Gizmos.DrawLine(path[i - 1], path[i]);
                  }
              }
          }

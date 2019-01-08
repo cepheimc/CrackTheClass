@@ -89,10 +89,9 @@ public class Grid : MonoBehaviour
         return gridNode[x, y];
     }
 
-    /*
-    // Optionally draws grid on scene for debugging purposes
-    void OnDrawGizmos()
+    // draws grid on scene for debugging purposes
     public List<Node> path;
+    void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector2(gridWorldSize.x, gridWorldSize.y));        
 
@@ -109,5 +108,4 @@ public class Grid : MonoBehaviour
             }
         
     }
-    */
 }

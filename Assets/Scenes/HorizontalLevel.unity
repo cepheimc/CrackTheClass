@@ -136,7 +136,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466630104}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 93848e3d66e480642b5219b9e5e475a6, type: 3}
@@ -306,16 +306,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1922023809870202887, guid: 3edd1e2ca68d7d743ab8cc5e5e87dca1,
-        type: 3}
-      propertyPath: gridWorldSize.x
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922023809870202887, guid: 3edd1e2ca68d7d743ab8cc5e5e87dca1,
-        type: 3}
-      propertyPath: gridWorldSize.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3edd1e2ca68d7d743ab8cc5e5e87dca1, type: 3}
 --- !u!1001 &1083524507
@@ -452,22 +442,17 @@ PrefabInstance:
       propertyPath: startWaitTime
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5019317435111202544, guid: 339ddb32dbc38d14c810e6a2ef759d31,
-        type: 3}
-      propertyPath: speed
-      value: 2
+    - target: {fileID: 1307942885, guid: 339ddb32dbc38d14c810e6a2ef759d31, type: 3}
+      propertyPath: m_Mass
+      value: 0.19639954
       objectReference: {fileID: 0}
-    - target: {fileID: 5019317435111202544, guid: 339ddb32dbc38d14c810e6a2ef759d31,
+    - target: {fileID: 7950417071285566368, guid: 339ddb32dbc38d14c810e6a2ef759d31,
         type: 3}
-      propertyPath: minX
-      value: 0
+      propertyPath: targetPicker
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5019317435111202544, guid: 339ddb32dbc38d14c810e6a2ef759d31,
-        type: 3}
-      propertyPath: maxX
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7950417071285566368, guid: 339ddb32dbc38d14c810e6a2ef759d31, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 339ddb32dbc38d14c810e6a2ef759d31, type: 3}
 --- !u!61 &290571750573544339
 BoxCollider2D:

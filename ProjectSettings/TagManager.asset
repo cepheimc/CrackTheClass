@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Exit
   - PickUp
+  - Lecturer
   layers:
   - Default
   - TransparentFX

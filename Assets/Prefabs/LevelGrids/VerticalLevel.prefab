@@ -1121,8 +1121,9 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 512
-  gridWorldSize: {x: 13, y: 9}
-  nodeSize: 0.1
+  gridWorldSize: {x: 14, y: 10}
+  nodeSize: 0.2
+  gridCreated: 0
 --- !u!114 &4079983583662077076
 MonoBehaviour:
   m_ObjectHideFlags: 0

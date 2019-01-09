@@ -17,25 +17,49 @@ public class LoadInitialCanvas : MonoBehaviour
     public Level[] levels;
     public GameObject pickLevelButton;
 
+    private Canvas canvas;
+
     void Start()
     {
-        Canvas canvas = GetComponent<Canvas>();
-        for (int i = 0; i < levels.Length; i++)
+        canvas = GetComponent<Canvas>();
+
+        int i;
+        for (i = 0; i <= levels.Length; i++)
         {
-            var button = GameObject.Instantiate(pickLevelButton, new Vector3(0f, -50f * i, 0f), Quaternion.identity);
-            button.transform.SetParent(canvas.transform, false);  // drop positioning
+            var button = CreateButton(new Vector3(0f, -50f * i, 0f));
 
-            var buttonText = button.GetComponentInChildren<Text>();
-            buttonText.text = levels[i].displayName;
-
-            var iStored = i;
-            button.GetComponent<Button>().onClick.AddListener(delegate { LoadLevel(levels[iStored]); });
+            if (i == levels.Length)
+            {
+                // Last button - exit button
+                button.GetComponentInChildren<Text>().text = "E X I T";
+                button.GetComponent<Button>().onClick.AddListener(Application.Quit);
+            }
+            else
+            {
+                button.GetComponentInChildren<Text>().text = levels[i].displayName;
+                var iCopy = i;
+                button.GetComponent<Button>().onClick.AddListener(delegate { LoadLevel(levels[iCopy]); });
+            }            
         }
+        
+    }
+
+    GameObject CreateButton(Vector3 position)
+    {
+        var button = GameObject.Instantiate(pickLevelButton, position, Quaternion.identity);
+        button.transform.SetParent(canvas.transform, false);  // drop positioning
+
+        return button;
     }
 
     void LoadLevel(Level level)
     {
         SceneManager.LoadScene(level.sceneName, LoadSceneMode.Single);
+    }
+
+    public void LoadThis()
+    {
+        SceneManager.LoadScene("InitialScene", LoadSceneMode.Single);
     }
 
 }

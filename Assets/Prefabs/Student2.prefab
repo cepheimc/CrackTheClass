@@ -92,11 +92,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484778847}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.39634955
+  m_UseAutoMass: 0
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -115,7 +115,7 @@ Animator:
   m_GameObject: {fileID: 484778847}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 37ab7f06711cc574ea346ad577ad02bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: e7af7a8992d319e45a87989f6747eba3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -136,13 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0952a16c369384ca3c926228a22f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 64, guid: c548ac9787f9f9549a89dcdf920c7c4e, type: 3}
-  speed: 3
-  startWaitTime: 20
-  minX: -3
-  maxX: 8
-  minY: -4
-  maxY: 4
+  speed: 2
+  minX: -5
+  maxX: 9
+  minY: -5
+  maxY: 5
 --- !u!114 &484778849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,5 +167,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.9}
+  m_Size: {x: 0.5, y: 0.5}
   m_Direction: 0
